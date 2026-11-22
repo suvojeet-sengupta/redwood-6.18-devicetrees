@@ -2,6 +2,7 @@
 	dsi_m20_42_0d_0b_dsc_vid: qcom,mdss_dsi_m20_42_0d_0b_dsc_vid {
 		qcom,mdss-dsi-panel-name = "xiaomi 42 0d 0b video mode dsc dsi panel";
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
+		qcom,mdss-dsi-panel-physical-type = "oled";
 		qcom,mdss-dsi-virtual-channel-id = <0>;
 		qcom,mdss-dsi-stream = <0>;
 		qcom,mdss-dsi-bpp = <30>;
@@ -110,10 +111,22 @@
 				qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
 				qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
 
-				qcom,mdss-dsi-lp1-command = [ ];
-				qcom,mdss-dsi-lp1-commandd-state = "dsi_hs_mode";
+				qcom,mdss-dsi-lp1-command = [
+					39 01 00 00 00 00 07 51 00 14 07 FF 01 FF
+					15 01 00 00 00 00 02 6C 00
+				];
+				qcom,mdss-dsi-lp1-command-state = "dsi_hs_mode";
 
-				qcom,mdss-dsi-nolp-command = [ ];
+				qcom,mdss-dsi-lp2-command = [
+					39 01 00 00 00 00 07 51 00 14 07 FF 01 FF
+					15 01 00 00 00 00 02 6C 00
+				];
+				qcom,mdss-dsi-lp2-command-state = "dsi_hs_mode";
+
+				qcom,mdss-dsi-nolp-command = [
+					39 01 00 00 00 00 07 51 00 14 07 FF 01 FF
+					15 01 00 00 00 00 02 6C 02
+				];
 				qcom,mdss-dsi-nolp-command-state = "dsi_hs_mode";
 
 				qcom,compression-mode = "dsc";
