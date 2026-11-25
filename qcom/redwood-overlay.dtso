@@ -198,6 +198,19 @@
 };
 
 /*
+ * redwood boots from UFS and has no eMMC or FM radio. These nodes never
+ * bind, so fw_devlink kept the interconnects, gcc and the regulators they
+ * share at their boot votes until deferred_probe_timeout forced sync_state.
+ */
+&sdhc_1 {
+	status = "disabled";
+};
+
+&{/soc/qcom,qupv3_0_geni_se@9c0000/i2c@984000/nq@64} {
+	status = "disabled";
+};
+
+/*
  * No serial console: the 6.12 GKI driver makes the debug UART a console,
  * and at 115200 baud each kernel warning took ~650 ms to print with the
  * console lock held, long enough to drop display frames and time out the
